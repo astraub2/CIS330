@@ -1,0 +1,173 @@
+//Grader: my code has a seg fault issue I have not fully resolved
+
+astraub2@ix-xenial: ~/uoregon-cis330/assignment4 23$ make
+g++ -std=c++11 -g -c reversi.cpp reversi.h
+g++ -std=c++11 -g -c main.cpp
+g++ -std=c++11 -g -o reversi reversi.o main.o
+astraub2@ix-xenial: ~/uoregon-cis330/assignment4 24$ reversi*
+  Enter even board dimensions (between 8 and 20)
+
+10
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - - - * - - - - -
+ 4 - - - * O X - - - -
+ 5 - - - - X O * - - -
+ 6 - - - - - * - - - -
+ 7 - - - - - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 1
+Enter the x and y coordinated of your move
+
+4
+3
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - - * - * - - - -
+ 4 - - - X X X - - - -
+ 5 - - - * X O - - - -
+ 6 - - - - - - - - - -
+ 7 - - - - - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 2
+Enter the x and y coordinated of your move
+
+5
+3
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - - - - - - - - -
+ 4 - - - X X X - - - -
+ 5 - - * O O O - - - -
+ 6 - - * * * * * - - -
+ 7 - - - - - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 1
+Enter the x and y coordinated of your move
+
+6
+2
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - * * * * * - - -
+ 4 - - - X X X - - - -
+ 5 - - * X O O - - - -
+ 6 - - X - - - - - - -
+ 7 - - - - - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 2
+Enter the x and y coordinated of your move
+
+3
+3
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - - O - - - - - -
+ 4 - - * O O X - - - -
+ 5 - - - O O O - - - -
+ 6 - - X * - * - - - -
+ 7 - - - - - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 1
+Enter the x and y coordinated of your move
+
+6
+3
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - - O - * - - - -
+ 4 - - * X O X * - - -
+ 5 - - * X X O - - - -
+ 6 - - X X * - - - - -
+ 7 - * - * - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 2
+Enter the x and y coordinated of your move
+
+7
+3
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - - - - - -
+ 3 - - * O * - - - - -
+ 4 - - * O O X - - - -
+ 5 - - * O X O * - - -
+ 6 - - X O * * - - - -
+ 7 - * * O - - - - - -
+ 8 - - - - * - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 1
+Enter the x and y coordinated of your move
+
+3
+4
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - - - - * - - - -
+ 3 - - - O X * * - - -
+ 4 - - - O X X * - - -
+ 5 - * * O X O - - - -
+ 6 - * X O - * - - - -
+ 7 - * - O - - - - - -
+ 8 - - - - - - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 2
+Enter the x and y coordinated of your move
+
+5
+2
+   0 1 2 3 4 5 6 7 8 9
+ 0 - - - - - - - - - -
+ 1 - - - - - - - - - -
+ 2 - - * - - - - - - -
+ 3 - - * O X - - - - -
+ 4 - - * O X X - - - -
+ 5 - * O O X O * - - -
+ 6 - * X O * * * - - -
+ 7 - * * O - - - - - -
+ 8 - - - - * - - - - -
+ 9 - - - - - - - - - -
+
+
+Player 1
+Enter the x and y coordinated of your move
+
+6
+4
+Segmentation fault (core dumped)

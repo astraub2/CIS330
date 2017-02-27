@@ -1,0 +1,770 @@
+/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/g_Makefile . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle1.c . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle2.c . > /dev/null 2>&1PASS
+-----<< Problem 1: >>------
+[2017-02-04 18:22:05.777977] gcc -std=c99 -c triangle1.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 1: >>------
+[2017-02-04 18:22:05.896406] /bin/rm -f test-triangle1 *.o && make -f g_Makefile test-triangle1
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test-triangle1.c
+gcc -c -std=c99 -g triangle1.c
+gcc -o test-triangle1 test-triangle1.o triangle1.o -lm
+
+STDERR:
+
+Comparing against master output:
+[2017-02-04 18:22:06.093618] diff -y -B -b triangle1.output triangle1.master
+Inputs: 
+STDOUT:
+							      >	Problem 1 (a triangle of height 5):
+							      >	          0 
+							      >	        0 1 2 
+							      >	      0 1 2 3 4 
+							      >	    0 1 2 3 4 5 6 
+							      >	  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 1: >>------
+[2017-02-04 18:22:06.125170] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASSPASS
+-----<< Problem 2: >>------
+[2017-02-04 18:22:06.271525] gcc -std=c99 -c triangle2.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2: >>------
+[2017-02-04 18:22:06.358917] /bin/rm -f test-triangle2 *.o && make -f g_Makefile test-triangle2
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test-triangle2.c
+gcc -c -std=c99 -g triangle2.c
+gcc -o test-triangle2 test-triangle2.o triangle2.o -lm
+
+STDERR:
+test-triangle2.c: In function ‘main’:
+test-triangle2.c:37:49: warning: passing argument 2 of ‘deallocateNumberTriangle’ from incompatible pointer type [-Wincompatible-pointer-types]
+   deallocateNumberTriangle( (const int) height, triangle );
+                                                 ^
+In file included from test-triangle2.c:5:0:
+triangle.h:19:6: note: expected ‘int ***’ but argument is of type ‘int **’
+ void deallocateNumberTriangle(const int height, int ***triangle);
+      ^
+
+-----<< Problem 2: >>------
+[2017-02-04 18:22:06.590865] ./test-triangle2
+Inputs: abc
+5
+
+STDOUT:
+
+Problem 2:
+Please enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-04 18:22:06.631336] diff -y -B -b triangle2.output triangle2.master
+Inputs: 
+STDOUT:
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]: Please enter t	Please enter the height of the triangle [1-5]: Please enter t
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+   0 1 2 3 4 5 6 						  0 1 2 3 4 5 6 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+							      >	  0 1 2 3 4 5 6 7 8 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 2: >>------
+[2017-02-04 18:22:06.666376] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-04 18:22:06.728167] gcc -std=c99 -c test.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-04 18:22:06.823901] /bin/rm -f test *.o && make -f g_Makefile test
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test.c
+gcc -c -std=c99 -g triangle1.c
+gcc -c -std=c99 -g triangle2.c
+gcc -o test test.o triangle1.o triangle2.o -lm
+g_Makefile:31: recipe for target 'test' failed
+
+STDERR:
+triangle1.o: In function `blankspace':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here
+triangle1.o: In function `print5Triangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here
+triangle2.o: In function `blankspacer':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here
+triangle2.o: In function `allocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here
+triangle2.o: In function `initializeNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here
+triangle2.o: In function `printNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here
+triangle2.o: In function `deallocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [test] Error 1
+
+Error: Failed to link test program: test.
+-----<< Problem 3: >>------
+[2017-02-04 18:22:07.122031] gcc -std=c99 -c mountain.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 3: >>------
+[2017-02-04 18:22:07.217529] /bin/rm -f mountain *.o && make -f g_Makefile mountain
+Inputs: 
+STDOUT:
+gcc -std=c99 -g    mountain.c   -o mountain
+
+STDERR:
+
+-----<< Problem 3: >>------
+[2017-02-04 18:22:07.370058] ./mountain
+Inputs: 5
+3 2 4 1 5
+
+STDOUT:
+
+STDERR:
+Segmentation fault (core dumped)
+
+Comparing against master output:
+[2017-02-04 18:22:07.591227] diff -y -B -b mountain.output mountain.master
+Inputs: 
+STDOUT:
+							      >	Please enter the number of peaks [1-5]: Please enter the heig
+							      >	                      0               0 1 2                 
+							      >	    0               0 1 2           0 1 2 3 4               
+							      >	  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             
+							      >	0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           
+
+STDERR:
+
+-----<< Problem 3: >>------
+[2017-02-04 18:22:07.619642] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 4: >>------
+[2017-02-04 18:22:07.688588] gcc -std=c99 -c main.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 4: >>------
+[2017-02-04 18:22:07.787298] /bin/rm -f main *.o && make -f g_Makefile main
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g triangle1.c
+gcc -c -std=c99 -g triangle2.c
+gcc -c -std=c99 -g main.c
+gcc -o main triangle1.o triangle2.o main.o
+
+STDERR:
+
+-----<< Problem 4: >>------
+[2017-02-04 18:22:08.036157] ./main
+Inputs: 3
+
+STDOUT:
+Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)
+         0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+Problem 2:
+Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-04 18:22:08.078116] diff -y -B -b main.output main.master
+Inputs: 
+STDOUT:
+Problem 1 (a triangle of height 5):				Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)			      <
+         0 							          0 
+       0 1 2 							        0 1 2 
+     0 1 2 3 4 							      0 1 2 3 4 
+   0 1 2 3 4 5 6 						    0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]:          0 	Please enter the height of the triangle [1-5]:         0     
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+							      >	  0 1 2 3 4 5 6 
+
+STDERR:
+
+-----<< Problem 4: >>------
+[2017-02-04 18:22:08.113140] numdiffs=`diff  -B -b main.output main.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+Points: {'log': "\n====================> Straub, Amber M ; 4565/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/g_Makefile . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle1.c . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle2.c . > /dev/null 2>&1PASS\n-----<< Problem 1: >>------\n[2017-02-04 18:22:05.777977] gcc -std=c99 -c triangle1.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 1: >>------\n[2017-02-04 18:22:05.896406] /bin/rm -f test-triangle1 *.o && make -f g_Makefile test-triangle1\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test-triangle1.c\ngcc -c -std=c99 -g triangle1.c\ngcc -o test-triangle1 test-triangle1.o triangle1.o -lm\n\nSTDERR:\n\nComparing against master output:\n[2017-02-04 18:22:06.093618] diff -y -B -b triangle1.output triangle1.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tProblem 1 (a triangle of height 5):\n\t\t\t\t\t\t\t      >\t          0 \n\t\t\t\t\t\t\t      >\t        0 1 2 \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4 \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 1: >>------\n[2017-02-04 18:22:06.125170] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASSPASS\n-----<< Problem 2: >>------\n[2017-02-04 18:22:06.271525] gcc -std=c99 -c triangle2.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2: >>------\n[2017-02-04 18:22:06.358917] /bin/rm -f test-triangle2 *.o && make -f g_Makefile test-triangle2\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test-triangle2.c\ngcc -c -std=c99 -g triangle2.c\ngcc -o test-triangle2 test-triangle2.o triangle2.o -lm\n\nSTDERR:\ntest-triangle2.c: In function \xe2\x80\x98main\xe2\x80\x99:\ntest-triangle2.c:37:49: warning: passing argument 2 of \xe2\x80\x98deallocateNumberTriangle\xe2\x80\x99 from incompatible pointer type [-Wincompatible-pointer-types]\n   deallocateNumberTriangle( (const int) height, triangle );\n                                                 ^\nIn file included from test-triangle2.c:5:0:\ntriangle.h:19:6: note: expected \xe2\x80\x98int ***\xe2\x80\x99 but argument is of type \xe2\x80\x98int **\xe2\x80\x99\n void deallocateNumberTriangle(const int height, int ***triangle);\n      ^\n\n-----<< Problem 2: >>------\n[2017-02-04 18:22:06.590865] ./test-triangle2\nInputs: abc\n5\n\nSTDOUT:\n\nProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-04 18:22:06.631336] diff -y -B -b triangle2.output triangle2.master\nInputs: \nSTDOUT:\n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter t\tPlease enter the height of the triangle [1-5]: Please enter t\n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n   0 1 2 3 4 5 6 \t\t\t\t\t\t  0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 2: >>------\n[2017-02-04 18:22:06.666376] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-04 18:22:06.728167] gcc -std=c99 -c test.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-04 18:22:06.823901] /bin/rm -f test *.o && make -f g_Makefile test\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test.c\ngcc -c -std=c99 -g triangle1.c\ngcc -c -std=c99 -g triangle2.c\ngcc -o test test.o triangle1.o triangle2.o -lm\ng_Makefile:31: recipe for target 'test' failed\n\nSTDERR:\ntriangle1.o: In function `blankspace':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here\ntriangle1.o: In function `print5Triangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here\ntriangle2.o: In function `blankspacer':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here\ntriangle2.o: In function `allocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here\ntriangle2.o: In function `initializeNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here\ntriangle2.o: In function `printNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here\ntriangle2.o: In function `deallocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here\ncollect2: error: ld returned 1 exit status\nmake: *** [test] Error 1\n\nError: Failed to link test program: test.\n-----<< Problem 3: >>------\n[2017-02-04 18:22:07.122031] gcc -std=c99 -c mountain.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 3: >>------\n[2017-02-04 18:22:07.217529] /bin/rm -f mountain *.o && make -f g_Makefile mountain\nInputs: \nSTDOUT:\ngcc -std=c99 -g    mountain.c   -o mountain\n\nSTDERR:\n\n-----<< Problem 3: >>------\n[2017-02-04 18:22:07.370058] ./mountain\nInputs: 5\n3 2 4 1 5\n\nSTDOUT:\n\nSTDERR:\nSegmentation fault (core dumped)\n\nComparing against master output:\n[2017-02-04 18:22:07.591227] diff -y -B -b mountain.output mountain.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tPlease enter the number of peaks [1-5]: Please enter the heig\n\t\t\t\t\t\t\t      >\t                      0               0 1 2                 \n\t\t\t\t\t\t\t      >\t    0               0 1 2           0 1 2 3 4               \n\t\t\t\t\t\t\t      >\t  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             \n\t\t\t\t\t\t\t      >\t0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           \n\nSTDERR:\n\n-----<< Problem 3: >>------\n[2017-02-04 18:22:07.619642] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 4: >>------\n[2017-02-04 18:22:07.688588] gcc -std=c99 -c main.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 4: >>------\n[2017-02-04 18:22:07.787298] /bin/rm -f main *.o && make -f g_Makefile main\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g triangle1.c\ngcc -c -std=c99 -g triangle2.c\ngcc -c -std=c99 -g main.c\ngcc -o main triangle1.o triangle2.o main.o\n\nSTDERR:\n\n-----<< Problem 4: >>------\n[2017-02-04 18:22:08.036157] ./main\nInputs: 3\n\nSTDOUT:\nProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\n         0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-04 18:22:08.078116] diff -y -B -b main.output main.master\nInputs: \nSTDOUT:\nProblem 1 (a triangle of height 5):\t\t\t\tProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\t\t\t      <\n         0 \t\t\t\t\t\t\t          0 \n       0 1 2 \t\t\t\t\t\t\t        0 1 2 \n     0 1 2 3 4 \t\t\t\t\t\t\t      0 1 2 3 4 \n   0 1 2 3 4 5 6 \t\t\t\t\t\t    0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \tPlease enter the height of the triangle [1-5]:         0     \n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 \n\nSTDERR:\n\n-----<< Problem 4: >>------\n[2017-02-04 18:22:08.113140] numdiffs=`diff  -B -b main.output main.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS", 'name': 'Straub, Amber M', '1': [5, 0, 5], '3': [15, 0, 15], '2': [10, 0, 10], '5': [0, 0, 0], '2-test': [5, 0, 0], '4': [5, 0, 5]}
+ENDSTUDENT Straub, Amber M
+
+====================> Zhai, Shengjie ; 6152PASS
+-----<< Problem 1: >>------
+[2017-02-04 18:56:39.165215] gcc -std=c99 -c triangle1.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+Comparing against master output:
+[2017-02-04 18:56:39.321013] diff -y -B -b triangle1.output triangle1.master
+Inputs: 
+STDOUT:
+							      >	Problem 1 (a triangle of height 5):
+							      >	          0 
+							      >	        0 1 2 
+							      >	      0 1 2 3 4 
+							      >	    0 1 2 3 4 5 6 
+							      >	  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 1: >>------
+[2017-02-04 18:56:39.354046] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASSPASS
+-----<< Problem 2: >>------
+[2017-02-04 18:56:39.443389] gcc -std=c99 -c triangle2.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2: >>------
+[2017-02-04 18:56:39.536433] ./test-triangle2
+Inputs: abc
+5
+
+STDOUT:
+
+Problem 2:
+Please enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-04 18:56:39.578257] diff -y -B -b triangle2.output triangle2.master
+Inputs: 
+STDOUT:
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]: Please enter t	Please enter the height of the triangle [1-5]: Please enter t
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+   0 1 2 3 4 5 6 						  0 1 2 3 4 5 6 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+							      >	  0 1 2 3 4 5 6 7 8 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 2: >>------
+[2017-02-04 18:56:39.613778] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-04 18:56:39.682708] gcc -std=c99 -c test.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-04 18:56:39.769226] /bin/rm -f test *.o && make -f g_Makefile test
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test.c
+gcc -c -std=c99 -g triangle1.c
+gcc -c -std=c99 -g triangle2.c
+gcc -o test test.o triangle1.o triangle2.o -lm
+g_Makefile:31: recipe for target 'test' failed
+
+STDERR:
+triangle1.o: In function `blankspace':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here
+triangle1.o: In function `print5Triangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here
+triangle2.o: In function `blankspacer':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here
+triangle2.o: In function `allocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here
+triangle2.o: In function `initializeNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here
+triangle2.o: In function `printNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here
+triangle2.o: In function `deallocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [test] Error 1
+
+Error: Failed to link test program: test.
+-----<< Problem 3: >>------
+[2017-02-04 18:56:40.066329] gcc -std=c99 -c mountain.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 3: >>------
+[2017-02-04 18:56:40.156299] ./mountain
+Inputs: 5
+3 2 4 1 5
+
+STDOUT:
+
+STDERR:
+Segmentation fault (core dumped)
+
+Comparing against master output:
+[2017-02-04 18:56:40.379567] diff -y -B -b mountain.output mountain.master
+Inputs: 
+STDOUT:
+							      >	Please enter the number of peaks [1-5]: Please enter the heig
+							      >	                      0               0 1 2                 
+							      >	    0               0 1 2           0 1 2 3 4               
+							      >	  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             
+							      >	0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           
+
+STDERR:
+
+-----<< Problem 3: >>------
+[2017-02-04 18:56:40.421780] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 4: >>------
+[2017-02-04 18:56:40.495378] gcc -std=c99 -c main.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 4: >>------
+[2017-02-04 18:56:40.589588] ./main
+Inputs: 3
+
+STDOUT:
+Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)
+         0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+Problem 2:
+Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-04 18:56:40.635234] diff -y -B -b main.output main.master
+Inputs: 
+STDOUT:
+Problem 1 (a triangle of height 5):				Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)			      <
+         0 							          0 
+       0 1 2 							        0 1 2 
+     0 1 2 3 4 							      0 1 2 3 4 
+   0 1 2 3 4 5 6 						    0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]:          0 	Please enter the height of the triangle [1-5]:         0     
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+							      >	  0 1 2 3 4 5 6 
+
+STDERR:
+
+-----<< Problem 4: >>------
+[2017-02-04 18:56:40.677120] numdiffs=`diff  -B -b main.output main.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+Points: {'log': "\n====================> Straub, Amber M ; 4565PASS\n-----<< Problem 1: >>------\n[2017-02-04 18:56:39.165215] gcc -std=c99 -c triangle1.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\nComparing against master output:\n[2017-02-04 18:56:39.321013] diff -y -B -b triangle1.output triangle1.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tProblem 1 (a triangle of height 5):\n\t\t\t\t\t\t\t      >\t          0 \n\t\t\t\t\t\t\t      >\t        0 1 2 \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4 \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 1: >>------\n[2017-02-04 18:56:39.354046] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASSPASS\n-----<< Problem 2: >>------\n[2017-02-04 18:56:39.443389] gcc -std=c99 -c triangle2.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2: >>------\n[2017-02-04 18:56:39.536433] ./test-triangle2\nInputs: abc\n5\n\nSTDOUT:\n\nProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-04 18:56:39.578257] diff -y -B -b triangle2.output triangle2.master\nInputs: \nSTDOUT:\n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter t\tPlease enter the height of the triangle [1-5]: Please enter t\n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n   0 1 2 3 4 5 6 \t\t\t\t\t\t  0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 2: >>------\n[2017-02-04 18:56:39.613778] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-04 18:56:39.682708] gcc -std=c99 -c test.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-04 18:56:39.769226] /bin/rm -f test *.o && make -f g_Makefile test\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test.c\ngcc -c -std=c99 -g triangle1.c\ngcc -c -std=c99 -g triangle2.c\ngcc -o test test.o triangle1.o triangle2.o -lm\ng_Makefile:31: recipe for target 'test' failed\n\nSTDERR:\ntriangle1.o: In function `blankspace':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here\ntriangle1.o: In function `print5Triangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here\ntriangle2.o: In function `blankspacer':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here\ntriangle2.o: In function `allocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here\ntriangle2.o: In function `initializeNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here\ntriangle2.o: In function `printNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here\ntriangle2.o: In function `deallocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here\ncollect2: error: ld returned 1 exit status\nmake: *** [test] Error 1\n\nError: Failed to link test program: test.\n-----<< Problem 3: >>------\n[2017-02-04 18:56:40.066329] gcc -std=c99 -c mountain.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 3: >>------\n[2017-02-04 18:56:40.156299] ./mountain\nInputs: 5\n3 2 4 1 5\n\nSTDOUT:\n\nSTDERR:\nSegmentation fault (core dumped)\n\nComparing against master output:\n[2017-02-04 18:56:40.379567] diff -y -B -b mountain.output mountain.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tPlease enter the number of peaks [1-5]: Please enter the heig\n\t\t\t\t\t\t\t      >\t                      0               0 1 2                 \n\t\t\t\t\t\t\t      >\t    0               0 1 2           0 1 2 3 4               \n\t\t\t\t\t\t\t      >\t  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             \n\t\t\t\t\t\t\t      >\t0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           \n\nSTDERR:\n\n-----<< Problem 3: >>------\n[2017-02-04 18:56:40.421780] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 4: >>------\n[2017-02-04 18:56:40.495378] gcc -std=c99 -c main.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 4: >>------\n[2017-02-04 18:56:40.589588] ./main\nInputs: 3\n\nSTDOUT:\nProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\n         0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-04 18:56:40.635234] diff -y -B -b main.output main.master\nInputs: \nSTDOUT:\nProblem 1 (a triangle of height 5):\t\t\t\tProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\t\t\t      <\n         0 \t\t\t\t\t\t\t          0 \n       0 1 2 \t\t\t\t\t\t\t        0 1 2 \n     0 1 2 3 4 \t\t\t\t\t\t\t      0 1 2 3 4 \n   0 1 2 3 4 5 6 \t\t\t\t\t\t    0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \tPlease enter the height of the triangle [1-5]:         0     \n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 \n\nSTDERR:\n\n-----<< Problem 4: >>------\n[2017-02-04 18:56:40.677120] numdiffs=`diff  -B -b main.output main.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS", 'name': 'Straub, Amber M', '1': [5, 0, 5], '3': [15, 0, 15], '2': [10, 0, 10], '5': [0, 0, 0], '2-test': [5, 0, 0], '4': [5, 0, 5]}
+ENDSTUDENT Straub, Amber M
+
+====================> Su, Daniel ; 4616/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/g_Makefile . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle1.c . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle2.c . > /dev/null 2>&1PASS
+-----<< Problem 1: >>------
+[2017-02-08 08:47:45.871469] gcc -std=c99 -c triangle1.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 1: >>------
+[2017-02-08 08:47:45.970204] /bin/rm -f test-triangle1 *.o && make -f g_Makefile test-triangle1
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test-triangle1.c
+gcc -c -std=c99 -g triangle1.c
+gcc -o test-triangle1 test-triangle1.o triangle1.o -lm
+
+STDERR:
+
+Comparing against master output:
+[2017-02-08 08:47:46.174060] diff -y -B -b triangle1.output triangle1.master
+Inputs: 
+STDOUT:
+							      >	Problem 1 (a triangle of height 5):
+							      >	          0 
+							      >	        0 1 2 
+							      >	      0 1 2 3 4 
+							      >	    0 1 2 3 4 5 6 
+							      >	  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 1: >>------
+[2017-02-08 08:47:46.211886] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASSPASS
+-----<< Problem 2: >>------
+[2017-02-08 08:47:46.293816] gcc -std=c99 -c triangle2.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2: >>------
+[2017-02-08 08:47:46.390555] /bin/rm -f test-triangle2 *.o && make -f g_Makefile test-triangle2
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test-triangle2.c
+gcc -c -std=c99 -g triangle2.c
+gcc -o test-triangle2 test-triangle2.o triangle2.o -lm
+
+STDERR:
+test-triangle2.c: In function ‘main’:
+test-triangle2.c:37:49: warning: passing argument 2 of ‘deallocateNumberTriangle’ from incompatible pointer type [-Wincompatible-pointer-types]
+   deallocateNumberTriangle( (const int) height, triangle );
+                                                 ^
+In file included from test-triangle2.c:5:0:
+triangle.h:19:6: note: expected ‘int ***’ but argument is of type ‘int **’
+ void deallocateNumberTriangle(const int height, int ***triangle);
+      ^
+
+-----<< Problem 2: >>------
+[2017-02-08 08:47:46.618290] ./test-triangle2
+Inputs: abc
+5
+
+STDOUT:
+
+Problem 2:
+Please enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-08 08:47:46.674378] diff -y -B -b triangle2.output triangle2.master
+Inputs: 
+STDOUT:
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]: Please enter t	Please enter the height of the triangle [1-5]: Please enter t
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+   0 1 2 3 4 5 6 						  0 1 2 3 4 5 6 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+							      >	  0 1 2 3 4 5 6 7 8 
+							      >
+							      >	Problem 2:
+							      >	Please enter the height of the triangle [1-5]: Please enter t
+							      >	        0 1 2       
+							      >	      0 1 2 3 4     
+							      >	    0 1 2 3 4 5 6   
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+STDERR:
+
+-----<< Problem 2: >>------
+[2017-02-08 08:47:46.716361] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-08 08:47:46.784480] gcc -std=c99 -c test.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 2-test: >>------
+[2017-02-08 08:47:46.884682] /bin/rm -f test *.o && make -f g_Makefile test
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g test.c
+gcc -c -std=c99 -g triangle1.c
+gcc -c -std=c99 -g triangle2.c
+gcc -o test test.o triangle1.o triangle2.o -lm
+g_Makefile:31: recipe for target 'test' failed
+
+STDERR:
+triangle1.o: In function `blankspace':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here
+triangle1.o: In function `print5Triangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here
+triangle2.o: In function `blankspacer':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here
+triangle2.o: In function `allocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here
+triangle2.o: In function `initializeNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here
+triangle2.o: In function `printNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here
+triangle2.o: In function `deallocateNumberTriangle':
+/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'
+test.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [test] Error 1
+
+Error: Failed to link test program: test.
+-----<< Problem 3: >>------
+[2017-02-08 08:47:47.173179] gcc -std=c99 -c mountain.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 3: >>------
+[2017-02-08 08:47:47.283663] /bin/rm -f mountain *.o && make -f g_Makefile mountain
+Inputs: 
+STDOUT:
+gcc -o mountain mountain.c -lm
+
+STDERR:
+
+-----<< Problem 3: >>------
+[2017-02-08 08:47:47.439810] ./mountain
+Inputs: 5
+3 2 4 1 5
+
+STDOUT:
+
+STDERR:
+Segmentation fault (core dumped)
+
+Comparing against master output:
+[2017-02-08 08:47:47.678781] diff -y -B -b mountain.output mountain.master
+Inputs: 
+STDOUT:
+							      >	Please enter the number of peaks [1-5]: Please enter the heig
+							      >	                      0               0 1 2                 
+							      >	    0               0 1 2           0 1 2 3 4               
+							      >	  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             
+							      >	0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           
+
+STDERR:
+
+-----<< Problem 3: >>------
+[2017-02-08 08:47:47.710279] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+-----<< Problem 4: >>------
+[2017-02-08 08:47:47.783943] gcc -std=c99 -c main.c
+Inputs: 
+STDOUT:
+
+STDERR:
+PASS
+-----<< Problem 4: >>------
+[2017-02-08 08:47:47.873511] /bin/rm -f main *.o && make -f g_Makefile main
+Inputs: 
+STDOUT:
+gcc -c -std=c99 -g triangle1.c
+gcc -c -std=c99 -g triangle2.c
+gcc -c -std=c99 -g main.c
+gcc -o main triangle1.o triangle2.o main.o
+
+STDERR:
+
+-----<< Problem 4: >>------
+[2017-02-08 08:47:48.138610] ./main
+Inputs: 3
+
+STDOUT:
+Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)
+         0 
+       0 1 2 
+     0 1 2 3 4 
+   0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 
+
+Problem 2:
+Please enter the height of the triangle [1-5]:          0 
+       0 1 2 
+     0 1 2 3 4 
+
+STDERR:
+
+Comparing against master output:
+[2017-02-08 08:47:48.179865] diff -y -B -b main.output main.master
+Inputs: 
+STDOUT:
+Problem 1 (a triangle of height 5):				Problem 1 (a triangle of height 5):
+Problem 1 (a triangle of height 5)			      <
+         0 							          0 
+       0 1 2 							        0 1 2 
+     0 1 2 3 4 							      0 1 2 3 4 
+   0 1 2 3 4 5 6 						    0 1 2 3 4 5 6 
+ 0 1 2 3 4 5 6 7 8 						  0 1 2 3 4 5 6 7 8 
+
+Problem 2:							Problem 2:
+Please enter the height of the triangle [1-5]:          0 	Please enter the height of the triangle [1-5]:         0     
+       0 1 2 							      0 1 2     
+     0 1 2 3 4 							    0 1 2 3 4   
+							      >	  0 1 2 3 4 5 6 
+
+STDERR:
+
+-----<< Problem 4: >>------
+[2017-02-08 08:47:48.217380] numdiffs=`diff  -B -b main.output main.master | wc -l`
+Inputs: 
+STDOUT:
+
+STDERR:
+Found 0 differences (within acceptable tolerance)
+PASS
+Points: {'log': "\n====================> Straub, Amber M ; 4565/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/g_Makefile . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle1.c . > /dev/null 2>&1/bin/cp /cs/groupprojects/cis330/assignments/assignment2/master/test-triangle2.c . > /dev/null 2>&1PASS\n-----<< Problem 1: >>------\n[2017-02-08 08:47:45.871469] gcc -std=c99 -c triangle1.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 1: >>------\n[2017-02-08 08:47:45.970204] /bin/rm -f test-triangle1 *.o && make -f g_Makefile test-triangle1\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test-triangle1.c\ngcc -c -std=c99 -g triangle1.c\ngcc -o test-triangle1 test-triangle1.o triangle1.o -lm\n\nSTDERR:\n\nComparing against master output:\n[2017-02-08 08:47:46.174060] diff -y -B -b triangle1.output triangle1.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tProblem 1 (a triangle of height 5):\n\t\t\t\t\t\t\t      >\t          0 \n\t\t\t\t\t\t\t      >\t        0 1 2 \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4 \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 1: >>------\n[2017-02-08 08:47:46.211886] numdiffs=`diff  -B -b triangle1.output triangle1.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASSPASS\n-----<< Problem 2: >>------\n[2017-02-08 08:47:46.293816] gcc -std=c99 -c triangle2.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2: >>------\n[2017-02-08 08:47:46.390555] /bin/rm -f test-triangle2 *.o && make -f g_Makefile test-triangle2\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test-triangle2.c\ngcc -c -std=c99 -g triangle2.c\ngcc -o test-triangle2 test-triangle2.o triangle2.o -lm\n\nSTDERR:\ntest-triangle2.c: In function \xe2\x80\x98main\xe2\x80\x99:\ntest-triangle2.c:37:49: warning: passing argument 2 of \xe2\x80\x98deallocateNumberTriangle\xe2\x80\x99 from incompatible pointer type [-Wincompatible-pointer-types]\n   deallocateNumberTriangle( (const int) height, triangle );\n                                                 ^\nIn file included from test-triangle2.c:5:0:\ntriangle.h:19:6: note: expected \xe2\x80\x98int ***\xe2\x80\x99 but argument is of type \xe2\x80\x98int **\xe2\x80\x99\n void deallocateNumberTriangle(const int height, int ***triangle);\n      ^\n\n-----<< Problem 2: >>------\n[2017-02-08 08:47:46.618290] ./test-triangle2\nInputs: abc\n5\n\nSTDOUT:\n\nProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-08 08:47:46.674378] diff -y -B -b triangle2.output triangle2.master\nInputs: \nSTDOUT:\n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]: Please enter t\tPlease enter the height of the triangle [1-5]: Please enter t\n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n   0 1 2 3 4 5 6 \t\t\t\t\t\t  0 1 2 3 4 5 6 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 7 8 \n\t\t\t\t\t\t\t      >\n\t\t\t\t\t\t\t      >\tProblem 2:\n\t\t\t\t\t\t\t      >\tPlease enter the height of the triangle [1-5]: Please enter t\n\t\t\t\t\t\t\t      >\t        0 1 2       \n\t\t\t\t\t\t\t      >\t      0 1 2 3 4     \n\t\t\t\t\t\t\t      >\t    0 1 2 3 4 5 6   \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nSTDERR:\n\n-----<< Problem 2: >>------\n[2017-02-08 08:47:46.716361] numdiffs=`diff  -B -b triangle2.output triangle2.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-08 08:47:46.784480] gcc -std=c99 -c test.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 2-test: >>------\n[2017-02-08 08:47:46.884682] /bin/rm -f test *.o && make -f g_Makefile test\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g test.c\ngcc -c -std=c99 -g triangle1.c\ngcc -c -std=c99 -g triangle2.c\ngcc -o test test.o triangle1.o triangle2.o -lm\ng_Makefile:31: recipe for target 'test' failed\n\nSTDERR:\ntriangle1.o: In function `blankspace':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: multiple definition of `blankspace'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:8: first defined here\ntriangle1.o: In function `print5Triangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: multiple definition of `print5Triangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle1.c:14: first defined here\ntriangle2.o: In function `blankspacer':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: multiple definition of `blankspacer'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:5: first defined here\ntriangle2.o: In function `allocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: multiple definition of `allocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:11: first defined here\ntriangle2.o: In function `initializeNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: multiple definition of `initializeNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:20: first defined here\ntriangle2.o: In function `printNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: multiple definition of `printNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:40: first defined here\ntriangle2.o: In function `deallocateNumberTriangle':\n/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: multiple definition of `deallocateNumberTriangle'\ntest.o:/cs/groupprojects/cis330/students/StraubAmberM/uoregon-cis330/assignment2/grading/triangle2.c:58: first defined here\ncollect2: error: ld returned 1 exit status\nmake: *** [test] Error 1\n\nError: Failed to link test program: test.\n-----<< Problem 3: >>------\n[2017-02-08 08:47:47.173179] gcc -std=c99 -c mountain.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 3: >>------\n[2017-02-08 08:47:47.283663] /bin/rm -f mountain *.o && make -f g_Makefile mountain\nInputs: \nSTDOUT:\ngcc -o mountain mountain.c -lm\n\nSTDERR:\n\n-----<< Problem 3: >>------\n[2017-02-08 08:47:47.439810] ./mountain\nInputs: 5\n3 2 4 1 5\n\nSTDOUT:\n\nSTDERR:\nSegmentation fault (core dumped)\n\nComparing against master output:\n[2017-02-08 08:47:47.678781] diff -y -B -b mountain.output mountain.master\nInputs: \nSTDOUT:\n\t\t\t\t\t\t\t      >\tPlease enter the number of peaks [1-5]: Please enter the heig\n\t\t\t\t\t\t\t      >\t                      0               0 1 2                 \n\t\t\t\t\t\t\t      >\t    0               0 1 2           0 1 2 3 4               \n\t\t\t\t\t\t\t      >\t  0 1 2     0     0 1 2 3 4       0 1 2 3 4 5 6             \n\t\t\t\t\t\t\t      >\t0 1 2 3 4 0 1 2 0 1 2 3 4 5 6 0 0 1 2 3 4 5 6 7 8           \n\nSTDERR:\n\n-----<< Problem 3: >>------\n[2017-02-08 08:47:47.710279] numdiffs=`diff  -B -b mountain.output mountain.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS\n-----<< Problem 4: >>------\n[2017-02-08 08:47:47.783943] gcc -std=c99 -c main.c\nInputs: \nSTDOUT:\n\nSTDERR:\nPASS\n-----<< Problem 4: >>------\n[2017-02-08 08:47:47.873511] /bin/rm -f main *.o && make -f g_Makefile main\nInputs: \nSTDOUT:\ngcc -c -std=c99 -g triangle1.c\ngcc -c -std=c99 -g triangle2.c\ngcc -c -std=c99 -g main.c\ngcc -o main triangle1.o triangle2.o main.o\n\nSTDERR:\n\n-----<< Problem 4: >>------\n[2017-02-08 08:47:48.138610] ./main\nInputs: 3\n\nSTDOUT:\nProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\n         0 \n       0 1 2 \n     0 1 2 3 4 \n   0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \n\nProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \n       0 1 2 \n     0 1 2 3 4 \n\nSTDERR:\n\nComparing against master output:\n[2017-02-08 08:47:48.179865] diff -y -B -b main.output main.master\nInputs: \nSTDOUT:\nProblem 1 (a triangle of height 5):\t\t\t\tProblem 1 (a triangle of height 5):\nProblem 1 (a triangle of height 5)\t\t\t      <\n         0 \t\t\t\t\t\t\t          0 \n       0 1 2 \t\t\t\t\t\t\t        0 1 2 \n     0 1 2 3 4 \t\t\t\t\t\t\t      0 1 2 3 4 \n   0 1 2 3 4 5 6 \t\t\t\t\t\t    0 1 2 3 4 5 6 \n 0 1 2 3 4 5 6 7 8 \t\t\t\t\t\t  0 1 2 3 4 5 6 7 8 \n\nProblem 2:\t\t\t\t\t\t\tProblem 2:\nPlease enter the height of the triangle [1-5]:          0 \tPlease enter the height of the triangle [1-5]:         0     \n       0 1 2 \t\t\t\t\t\t\t      0 1 2     \n     0 1 2 3 4 \t\t\t\t\t\t\t    0 1 2 3 4   \n\t\t\t\t\t\t\t      >\t  0 1 2 3 4 5 6 \n\nSTDERR:\n\n-----<< Problem 4: >>------\n[2017-02-08 08:47:48.217380] numdiffs=`diff  -B -b main.output main.master | wc -l`\nInputs: \nSTDOUT:\n\nSTDERR:\nFound 0 differences (within acceptable tolerance)\nPASS", 'name': 'Straub, Amber M', '1': [5, 0, 5], '3': [15, 0, 15], '2': [10, 0, 10], '5': [0, 0, 0], '2-test': [5, 0, 0], '4': [5, 0, 5]}
+ENDSTUDENT Straub, Amber M
+
+====================> Su, Daniel ; 4616
